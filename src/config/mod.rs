@@ -1,6 +1,7 @@
 use dotenv::dotenv;
 use std::env;
 
+pub mod database;
 pub struct Config {
     pub database_url: String,
 }
