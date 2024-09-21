@@ -1,6 +1,6 @@
 use actix_web::{get, web, App, HttpServer};
-mod config;
 mod api;
+mod config;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -22,6 +22,6 @@ async fn main() -> std::io::Result<()> {
 
 #[get("/")]
 async fn index(data: web::Data<config::Config>) -> String {
-    let db_url = &data.database_url; // <- get app_name
-    format!("Database URL: {db_url}!") // <- response with app_name
+    let db_url = &data.database_url;
+    format!("Database URL is here: {db_url}!")
 }
