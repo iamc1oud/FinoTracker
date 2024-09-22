@@ -3,9 +3,6 @@ use std::env;
 use actix_web::{middleware::Logger, rt::System};
 use mongodb::{Client, Collection};
 
-<<<<<<< HEAD
-use crate::models::auth::accounts::Accounts;
-=======
 use crate::models::user::user::User;
 
 // Collection
@@ -20,7 +17,6 @@ impl ToString for AppCollections {
         }
     }
 }
->>>>>>> f931205736a878ab0d7c5226223e1408b218af37
 
 pub struct Database {
     pub user: Collection<User>,

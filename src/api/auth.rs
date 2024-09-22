@@ -3,11 +3,7 @@ use mongodb::bson::doc;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 
-<<<<<<< HEAD
-use crate::{config, models::auth::accounts::Accounts};
-=======
 use crate::{config, models::user::user::User};
->>>>>>> f931205736a878ab0d7c5226223e1408b218af37
 
 #[derive(Serialize, Deserialize)]
 struct Login {
