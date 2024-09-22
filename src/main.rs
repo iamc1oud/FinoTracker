@@ -11,6 +11,8 @@ async fn main() -> std::io::Result<()> {
 
     let db = config::database::Database::init().await;
 
+    println!("DB Connected");
+
     let db_data = web::Data::new(db);
 
     HttpServer::new(move ||{
