@@ -3,7 +3,7 @@ use std::env;
 
 use mongodb::{Client, Collection};
 
-use crate::models::accounts::Accounts;
+use crate::models::auth::accounts::Accounts;
 
 pub struct Database {
     pub accounts: Collection<Accounts>,

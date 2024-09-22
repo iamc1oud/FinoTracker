@@ -2,7 +2,7 @@ use actix_web::{get, web, HttpResponse, Responder};
 use mongodb::bson::doc;
 use serde::{Deserialize, Serialize};
 
-use crate::{config, models::accounts::Accounts};
+use crate::{config, models::auth::accounts::Accounts};
 
 #[derive(Serialize, Deserialize)]
 struct Login {
