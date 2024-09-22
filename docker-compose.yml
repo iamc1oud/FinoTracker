@@ -3,10 +3,6 @@ services:
     image: mongo:latest
     container_name: mongo
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-      MONGO_INITDB_DATABASE: fino_db
     volumes:
       - mongo-data:/data/db
     ports:

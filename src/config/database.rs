@@ -1,4 +1,3 @@
-
 use std::env;
 
 use actix_web::{middleware::Logger, rt::System};
@@ -25,9 +24,17 @@ pub struct Database {
 
 impl Database {
     pub async fn init() -> Self {
+        let key = "MONGO_URI";
+
+        dotenv::dotenv().ok();
+
         let uri = match env::var("MONGO_URI") {
-            Ok(value) => value.to_string(),
-            Err(_) => {
+            Ok(value) => {
+                println!("Loaded MONGO_URI from .env file: {}", value);
+                value.to_string()
+            }
+            Err(e) => {
+                println!("couldn't interpret {key}: {e}");
                 std::process::exit(1);
             }
         };
@@ -39,10 +46,8 @@ impl Database {
 
         let db = client.database("fino_db");
 
-        let user : Collection<User> = db.collection(&AppCollections::Users.to_string());
+        let user: Collection<User> = db.collection(&AppCollections::Users.to_string());
 
-        return Database {
-            user,
-        }
+        return Database { user };
     }
 }
