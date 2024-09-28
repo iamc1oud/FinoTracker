@@ -1,6 +1,6 @@
 use std::env;
 
-use actix_web::{middleware::Logger, rt::System};
+
 use mongodb::{Client, Collection};
 
 use crate::models::user::user::User;
