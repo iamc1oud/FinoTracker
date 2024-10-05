@@ -13,10 +13,10 @@ lazy_static! {
 
 #[derive(Serialize, Deserialize, Validate)]
 pub struct LoginBodyDTO {
-    #[validate(regex(
-        path = "RE_USER_NAME",
-        message = "Username must number and alphabets only and must be 6 characters long"
-    ))]
+    // #[validate(regex(
+    //     path = "RE_USER_NAME",
+    //     message = "Username must number and alphabets only and must be 6 characters long"
+    // ))]
     pub email: String,
 
     #[validate(custom(

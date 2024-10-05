@@ -17,7 +17,6 @@ async fn main() -> std::io::Result<()> {
             .wrap(middleware::DefaultHeaders::new().add(("X-API-Version", "1.0.0")))
             .app_data(db_data.clone())
             .configure(api::auth::register_routes)
-            
     })
     .bind(("localhost", 8080))?
     .run()

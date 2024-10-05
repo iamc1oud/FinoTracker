@@ -3,7 +3,7 @@ use std::env;
 
 use mongodb::{Client, Collection};
 
-use crate::models::user::user::User;
+use crate::models::user::user::{MongoUserRepository, User, UserRepository};
 
 // Collection
 enum AppCollections {
@@ -19,7 +19,7 @@ impl ToString for AppCollections {
 }
 
 pub struct Database {
-    pub user: Collection<User>,
+    pub user: MongoUserRepository,
 }
 
 impl Database {
@@ -47,7 +47,8 @@ impl Database {
         let db = client.database("fino_db");
 
         let user: Collection<User> = db.collection(&AppCollections::Users.to_string());
+        let user_repository = MongoUserRepository::new(user);
 
-        return Database { user };
+        return Database { user: user_repository };
     }
 }
