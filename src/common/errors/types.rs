@@ -19,12 +19,12 @@ impl<T> ApiResponse<T> {
         }
     }
 
-    pub fn error(message: &str, error_detail: &str) -> Self {
+    pub fn error(message: &str, error_detail: Option<String>) -> Self {
         ApiResponse {
             success: false,
             message: message.to_string(),
             data: None,
-            error: Some(error_detail.to_string()),
+            error: Some(error_detail.unwrap_or_default()),
         }
     }
 }

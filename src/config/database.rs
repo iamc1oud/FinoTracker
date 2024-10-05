@@ -3,23 +3,26 @@ use std::env;
 
 use mongodb::{Client, Collection};
 
-use crate::models::user::user::{MongoUserRepository, User, UserRepository};
+use crate::models::{auth::account::{Account, MongoAccountRepository}, user::user::{MongoUserRepository, User, UserRepository}};
 
 // Collection
 enum AppCollections {
     Users,
+    Account
 }
 
 impl ToString for AppCollections {
     fn to_string(&self) -> String {
         match self {
             AppCollections::Users => "users".to_string(),
+            AppCollections::Account => "accounts".to_string(),
         }
     }
 }
 
 pub struct Database {
     pub user: MongoUserRepository,
+    pub account: MongoAccountRepository,
 }
 
 impl Database {
@@ -49,6 +52,9 @@ impl Database {
         let user: Collection<User> = db.collection(&AppCollections::Users.to_string());
         let user_repository = MongoUserRepository::new(user);
 
-        return Database { user: user_repository };
+        let account: Collection<Account> = db.collection(&AppCollections::Account.to_string());
+        let account_repository = MongoAccountRepository::new(account);
+
+        return Database { user: user_repository, account: account_repository };
     }
 }

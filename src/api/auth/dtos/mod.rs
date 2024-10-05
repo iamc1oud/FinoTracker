@@ -26,6 +26,12 @@ pub struct LoginBodyDTO {
     pub password: String,
 }
 
+#[derive(Serialize, Deserialize, Validate)]
+pub struct CreateAccountDTO {
+    #[validate(email)]
+    pub email: String,
+}
+
 fn validate_password(password: &str) -> Result<(), ValidationError> {
     let mut has_whitespace = false;
     let mut has_upper = false;

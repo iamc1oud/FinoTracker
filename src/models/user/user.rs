@@ -28,6 +28,8 @@ pub struct User {
 }
 
 pub trait UserRepository {
+    async fn instance(&self) -> Collection<User>;
+
     // Inject the MongoDB collection in the constructor
     fn new(model: Collection<User>) -> Self;
 
@@ -68,5 +70,9 @@ impl UserRepository for MongoUserRepository {
     async fn create(&self, user: User) -> Result<(), Error> {
         self.collection.insert_one(user).await?;
         Ok(())
+    }
+
+    async fn instance(&self) -> Collection<User> {
+        return self.collection.clone();
     }
 }
