@@ -3,8 +3,6 @@ from app.routes import auth
 from app.ioc import Container
 from app.database import Base, engine
 
-Base.metadata.create_all(bind=engine)
-
 container = Container()
 
 container.wire(modules=[auth])
