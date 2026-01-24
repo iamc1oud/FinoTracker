@@ -10,3 +10,17 @@ spec:
       port: 80
       targetPort: 8000
   type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+spec:
+  selector:
+    app: auth-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP
