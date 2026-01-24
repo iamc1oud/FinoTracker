@@ -15,6 +15,7 @@ spec:
       containers:
         - name: api-gateway
           image: api-gateway:latest
+          imagePullPolicy: Never # To avoid pulling the image from a remote registry
           ports:
             - containerPort: 8000
           env:
